@@ -18,6 +18,9 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default-secret-key')
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
+# Initialize database
+init_db()
+
 # TheOddsAPI configuration
 ODDS_API_KEY = os.getenv('THE_ODDS_API_KEY')
 ODDS_API_HOST = 'https://api.the-odds-api.com/v4'
@@ -68,7 +71,9 @@ def get_sports_odds(sport='upcoming'):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('dashboard'))
+    return render_template('login.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
