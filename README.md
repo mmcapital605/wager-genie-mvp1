@@ -36,7 +36,7 @@ Create a `.env` file in the root directory with:
 FLASK_APP=app.py
 FLASK_ENV=development
 SECRET_KEY=your-secret-key-here
-THE_ODDS_API_KEY=your-api-key-here
+THE_ODDS_API_KEY=be55e8c0376c84086a8d3bf7c670a604
 ```
 
 5. Run the application:
